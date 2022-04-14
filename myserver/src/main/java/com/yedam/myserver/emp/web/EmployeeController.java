@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yedam.myserver.emp.mapper.EmployeeMapper;
-import com.yedam.myserver.emp.vo.Departments;
 import com.yedam.myserver.emp.vo.Employee;
 
 @RestController
@@ -60,4 +61,16 @@ public class EmployeeController {
 		return bean;
 	}	
 	
+	//부서별 인원수
+	@GetMapping("/findStat")
+	@ResponseBody
+	public List<Map<String, Object>> findStat() {
+		return employeeDao.findStat();
+	}
+	//부서별 평균급여
+	@GetMapping("/findAvg")
+	@ResponseBody
+	public List<Map<String, Object>> findAvg(){
+		return employeeDao.findAvg();
+	}
 }

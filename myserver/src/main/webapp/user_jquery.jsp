@@ -69,13 +69,6 @@ $('.col').scrollTop($('.col').prop('scrollHeight'));
 		
 </div>
 
-<!-- 일단  >> data : JSON.stringify($("#frm").serializeObject()), 이들어간 부분이 안되고 있고
-	삭제 와 수정 부분의 document.querySelector('[name='+data.id+']').remove(); 이부분의
-	.remove()가 정상적으로 안먹힙니다 
-	어떤 의미이냐 하면 삭제가 먹히는데 새로고침해야 먹힙니다 ;;
-	 
-
- -->
 
 		<script type= "text/javascript">
 
