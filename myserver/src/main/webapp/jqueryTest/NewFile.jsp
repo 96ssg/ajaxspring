@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="">ㅋㅋ</a>
+<div id="abc">
+	<div>ㅋㅋ</div>
+</div>
 <script>
-$("a").attr("href","/emp")
+$("#abc").prepend($("<div>").text("first"));
 </script>
 </body>
 </html>
