@@ -126,6 +126,7 @@ input {
   background-color: #bbb;
 }
 </style>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
@@ -136,26 +137,23 @@ input {
 </div>
 
 <ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
 </ul>
 
 <script>
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
 
+$.ajax({
+	url : "../todoSelect",
+}).done(function(datas){
+	for(todo of datas){
+		let li = $("<li>").html(todo.contents + "<span class='close'>x</span>")
+		if(todo.todoyn == '1'){
+			li.addClass("checked")
+		}
+		$("#myUL").append(li);
+	}
+})
+//이벤트위임
+//close span태그 클릭시 , 삭제ajax 호출 
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
 var i;
@@ -166,6 +164,8 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
+//li태그 클릭시 상태값 변경 저장
+$("ul").on("click","li")
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
